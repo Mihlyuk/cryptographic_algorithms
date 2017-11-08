@@ -3,7 +3,7 @@ require_relative 'algorithms_lab3.rb'
 class Algorithms4
   def self.reverse_substitution(matrix)
     matrix = matrix.reverse.transpose
-    matrix = matrix.sort_by { |element| element[0] }.transpose
+    matrix = matrix.sort_by {|element| element[0]}.transpose
 
     matrix
   end
@@ -19,7 +19,7 @@ class Algorithms4
 
   def self.cycles(matrix)
     matrix = matrix.transpose
-    matrix.reject! { |pair| pair.first == pair.last }
+    matrix.reject! {|pair| pair.first == pair.last}
 
     cycle = []
     temp_cycle = []
@@ -63,6 +63,52 @@ class Algorithms4
     false
   end
 
+  def self.forming_elements(group)
+    forming_numbers = []
+
+    prime_numbers =
+        Algorithms3.canonical_decomposition(group - 1)[1]
+            .gsub(' ', '')
+            .scan(/(\d+)(?:\^\d+)?/)
+            .map {|n| n.first.to_i}
+
+    prime_numbers_multiple =
+        Algorithms3.canonical_decomposition(group)[1]
+            .gsub(' ', '')
+            .scan(/(\d+)(?:\^\d+)?/)
+            .map {|n| n.first.to_i}
+
+    hyp_forming_numbers = (2...group - 1).to_a - prime_numbers_multiple
+
+    hyp_forming_numbers.each do |hyp_forming|
+      expr = prime_numbers.select do |prime_number|
+        (hyp_forming ** ((group - 1) / prime_number)) % group == 1
+      end
+
+      forming_numbers << hyp_forming if expr.empty?
+    end
+
+    forming_numbers
+  end
+
+  def self.generate_transpose(transpose_size)
+    result = []
+
+    transpose_size.times do |n|
+      result << [n + 1, n + 1]
+    end
+
+    transpose_size.times do |n|
+      rand = rand(transpose_size)
+
+      temp = result[n][1]
+      result[n][1] = result[rand][1]
+      result[rand][1] = temp
+    end
+
+    result.transpose
+  end
+
   def self.transpose(cycle)
     cycle.map do |group|
       group.slice(1..-1).map do |gr|
@@ -70,4 +116,5 @@ class Algorithms4
       end
     end
   end
+
 end

@@ -18,7 +18,7 @@ g = [
     [4, 7, 3, 6, 2, 5, 1]
 ]
 
-m = [60951, 493039, 18, 2741]
+m = [18, 9]
 
 #==============================================================================
 
@@ -36,15 +36,15 @@ puts "#{'f^-1'.cyan} = \n#{pretty(Algorithms4.reverse_substitution(f))}\n"
 #==============================================================================
 
 puts '2. Произведение подстановок'.blue.bold
-puts "#{'f * g'.cyan} = \n#{pretty(Algorithms4.multiplication_substitution(f, g))}
-     #{'g * f'.cyan} = \n#{pretty(Algorithms4.multiplication_substitution(f, g))}\n"
+puts "#{'f * g'.cyan} = \n#{pretty(Algorithms4.multiplication_substitution(f, g))}"
+puts "#{'g * f'.cyan} = \n#{pretty(Algorithms4.multiplication_substitution(f, g))}\n"
 
 #==============================================================================
 
 cycle = Algorithms4.cycles(f)
 transpose = Algorithms4.transpose(cycle).flatten(1)
-pretty_cycle = cycle.map { |c| "(#{c.join(' ')})" }.join('')
-pretty_transpose = transpose.map { |t| "(#{t.join(' ')})" }.join('')
+pretty_cycle = cycle.map {|c| "(#{c.join(' ')})"}.join('')
+pretty_transpose = transpose.map {|t| "(#{t.join(' ')})"}.join('')
 
 puts '3. Циклы и транспозиции подстановки'.blue.bold
 puts "#{'f'.cyan} = #{pretty_cycle} = #{pretty_transpose}
@@ -52,19 +52,21 @@ puts "#{'f'.cyan} = #{pretty_cycle} = #{pretty_transpose}
 
 #==============================================================================
 
-puts '5. Генерация случайной подстановки'.blue.bold
-
+puts '4. Генерация случайной подстановки'.blue.bold
+puts 'gen'.cyan + " =
+#{pretty(Algorithms4.generate_transpose(10))}
+"
 
 #==============================================================================
-puts '4. Проверка на цикличность группы'.blue.bold
+puts '5. Проверка на цикличность группы'.blue.bold
 m.each_with_index do |group, index|
   puts "m#{index + 1}(#{group})".cyan + " = #{Algorithms4.is_cycle?(group) ? 'Циклическая' : 'Не циклическая'}"
 end
-
+puts
 #==============================================================================
 
-puts '5. Образующие элементы'.blue.bold
+puts '6. Образующие элементы'.blue.bold
 m.each_with_index do |group, index|
-  puts "m#{index + 1}(#{group})".cyan + " = #{Algorithms4.is_cycle?(group) ? 'Циклическая' : 'Не циклическая'}"
+  puts "m#{index + 1}(#{group})".cyan + " = #{Algorithms4.forming_elements(group)}"
 end
 #==============================================================================
