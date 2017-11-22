@@ -95,18 +95,18 @@ class Algorithms4
     result = []
 
     transpose_size.times do |n|
-      result << [n + 1, n + 1]
+      result << [n, n]
     end
 
     transpose_size.times do |n|
       rand = rand(transpose_size)
 
-      temp = result[n][1]
-      result[n][1] = result[rand][1]
+      temp = result[n].last
+      result[n][1] = rand
       result[rand][1] = temp
     end
 
-    result.transpose
+    result
   end
 
   def self.transpose(cycle)
