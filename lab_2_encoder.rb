@@ -4,7 +4,7 @@ secret_hash = secret_key.split('').map.with_index {|a, index| [index, a]}.sort_b
 file_text = File.read(path_to_file).to_s
 text_map = file_text.split('').each_slice((file_text.length / secret_key.length).ceil).to_a
 
-secret_key.length.times do |index|
+(file_text.length / secret_key.length).ceil.times do |index|
   text_map[text_map.length - 1][index] ||= ''
 end
 

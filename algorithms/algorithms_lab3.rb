@@ -13,6 +13,7 @@ class Algorithms3
     true
   end
 
+  # return array [simple_numbers, pretty_view]
   def self.canonical_decomposition(number)
     return 1 if number == 1
 
