@@ -1,12 +1,13 @@
 require_relative 'methods/algorithms.rb'
+require_relative 'methods/helper.rb'
 
 p = 134041249
 g = 7
 
-a = Algorithms.generate_key
+a = Helper.generate_key
 puts "Секретный ключ Алисы: #{a}"
 
-b = Algorithms.generate_key
+b = Helper.generate_key
 puts "Секретный ключ Боба: #{b}"
 
 y = Algorithms.modular_pow(g, a, p)
