@@ -21,11 +21,11 @@ m = [18, 9]
 
 #==============================================================================
 
-puts "\n=========================================".green
-puts "#{'f'.cyan} = \n#{pretty(f)}\n"
-puts "#{'g'.cyan} = \n#{pretty(g)}\n"
-puts "#{'m'.cyan} = #{m.inspect}"
-puts "=========================================\n".green
+puts "\n========================================="
+puts "#{'f'} = \n#{pretty(f)}\n"
+puts "#{'g'} = \n#{pretty(g)}\n"
+puts "#{'m'} = #{m.inspect}"
+puts "=========================================\n"
 
 #==============================================================================
 
@@ -45,8 +45,8 @@ transpose = Algorithms.transpose(cycle).flatten(1)
 pretty_cycle = cycle.map {|c| "(#{c.join(' ')})"}.join('')
 pretty_transpose = transpose.map {|t| "(#{t.join(' ')})"}.join('')
 
-puts '3. Циклы и транспозиции подстановки'.blue.bold
-puts "#{'f'.cyan} = #{pretty_cycle} = #{pretty_transpose}
+puts '3. Циклы и транспозиции подстановки'
+puts "#{'f'} = #{pretty_cycle} = #{pretty_transpose}
      \n"
 
 #==============================================================================
@@ -57,14 +57,14 @@ puts 'gen'.cyan + " =
 "
 
 #==============================================================================
-puts '5. Проверка на цикличность группы'.blue.bold
+puts '5. Проверка на цикличность группы'
 m.each_with_index do |group, index|
   puts "m#{index + 1}(#{group})".cyan + " = #{Algorithms.is_cycle?(group) ? 'Циклическая' : 'Не циклическая'}"
 end
 puts
 #==============================================================================
 
-puts '6. Образующие элементы'.blue.bold
+puts '6. Образующие элементы'
 m.each_with_index do |group, index|
   puts "m#{index + 1}(#{group})".cyan + " = #{Algorithms.forming_elements(group)}"
 end

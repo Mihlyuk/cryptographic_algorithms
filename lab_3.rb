@@ -18,7 +18,7 @@ a) Алгоритм Евклида = #{Algorithms.nod(m1, n1)}
 \n"
 
 puts "3. Расширенный алгоритм Евклида:
-#{Algorithms.extended_euclidean_algorithm(2038074743, 2038074751)}
+#{Algorithms.extended_euclidean_algorithm(m1, n1)}
 \n"
 
 puts "4. Функция Эйлера
