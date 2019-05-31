@@ -13,22 +13,22 @@ while true
       bob_public_key = Algorithms.modular_pow(g, bob_secret_key, p)
 
       Helper.write_public_key('bob_public_key', bob_public_key)
-      puts "Опубликован публичный ключ Боба: #{bob_public_key}"
+      puts "Public key published: #{bob_public_key}"
     when 'read'
       begin
         crypt_message = Helper.read_message
       rescue Errno::ENOENT => e
-        puts 'У вас нет сообщений от Алисы.'
+        puts 'You have no messages.'
         next
       end
 
       if crypt_message.empty?
-        puts 'У вас нет сообщений от Алисы.'
+        puts 'You have no messages.'
         next
       end
 
       unless bob_secret_key
-        puts 'Необходимо сгенерировать приватный ключ Боба!'
+        puts 'Bob private key needed to be generated!'
         next
       end
 
@@ -41,8 +41,8 @@ while true
         Helper.code_to_message(letter_code)
       end.join
 
-      puts "Сообщение от Алисы: #{message}"
+      puts "Message from Alice: #{message}"
     else
-      puts 'Неправильный метод'
+      puts 'Wrong method'
   end
 end

@@ -16,6 +16,6 @@ secret_hash.each_with_index do |shuf_row, index|
   result[index] =  text_map.transpose[shuf_row[0]]
 end
 
-File.open('decode_text.txt', 'w') { |file| file.write(result.transpose.flatten.join) }
+File.open('encoded_text.txt', 'w') { |file| file.write(result.transpose.flatten.join) }
 
 puts 'OK'
